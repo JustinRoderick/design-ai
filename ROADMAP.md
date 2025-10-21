@@ -127,6 +127,7 @@ An AI-powered interior design application that allows users to visualize, edit, 
 3. Implement file deletion functionality
 4. Create unique key generation utility
 5. Add error handling and retry logic
+6. Ability to share links with anyone to see final designs
 
 ---
 
