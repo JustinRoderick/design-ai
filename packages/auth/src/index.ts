@@ -38,8 +38,8 @@ export const auth = betterAuth({
         checkout({
           products: [
             {
-              productId: "your-product-id",
-              slug: "pro",
+              productId: process.env.POLAR_PRODUCT_ID!,
+              slug: "designai",
             },
           ],
           successUrl: process.env.POLAR_SUCCESS_URL,
