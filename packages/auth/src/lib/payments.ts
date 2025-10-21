@@ -1,5 +1,6 @@
 import { Polar } from "@polar-sh/sdk";
+import { env } from "../env";
 
 export const polarClient = new Polar({
-  accessToken: process.env.POLAR_ACCESS_TOKEN,
+  accessToken: env.POLAR_ACCESS_TOKEN,
 });
