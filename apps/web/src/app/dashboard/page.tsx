@@ -4,28 +4,28 @@ import { headers } from "next/headers";
 import { authClient } from "@/lib/auth-client";
 
 export default async function DashboardPage() {
-	const session = await authClient.getSession({
-		fetchOptions: {
-			headers: await headers(),
-			throw: true,
-		},
-	});
+  const session = await authClient.getSession({
+    fetchOptions: {
+      headers: await headers(),
+      throw: true,
+    },
+  });
 
-	if (!session?.user) {
-		redirect("/login");
-	}
+  if (!session?.user) {
+    redirect("/login");
+  }
 
-	const { data: customerState } = await authClient.customer.state({
-		fetchOptions: {
-			headers: await headers(),
-		},
-	});
+  const { data: customerState } = await authClient.customer.state({
+    fetchOptions: {
+      headers: await headers(),
+    },
+  });
 
-	return (
-		<div>
-			<h1>Dashboard</h1>
-			<p>Welcome {session.user.name}</p>
-			<Dashboard session={session} customerState={customerState} />
-		</div>
-	);
+  return (
+    <div>
+      <h1>Dashboard</h1>
+      <p>Welcome {session.user.name}</p>
+      <Dashboard session={session} customerState={customerState} />
+    </div>
+  );
 }
