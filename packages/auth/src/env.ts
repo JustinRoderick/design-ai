@@ -6,10 +6,14 @@ export const env = createEnv({
     POLAR_PRODUCT_ID: z.string(),
     POLAR_SUCCESS_URL: z.url(),
     POLAR_ACCESS_TOKEN: z.string(),
+    GOOGLE_CLIENT_ID: z.string(),
+    GOOGLE_CLIENT_SECRET: z.string(),
   },
   runtimeEnv: {
     POLAR_PRODUCT_ID: process.env.POLAR_PRODUCT_ID,
     POLAR_SUCCESS_URL: process.env.POLAR_SUCCESS_URL,
     POLAR_ACCESS_TOKEN: process.env.POLAR_ACCESS_TOKEN,
+    GOOGLE_CLIENT_ID: process.env.GOOGLE_CLIENT_ID,
+    GOOGLE_CLIENT_SECRET: process.env.GOOGLE_CLIENT_SECRET,
   },
 });
