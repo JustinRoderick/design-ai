@@ -11,6 +11,7 @@ import {
   Zap,
 } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
 
 export default function LandingPage() {
   return (
@@ -18,8 +19,8 @@ export default function LandingPage() {
       <nav className="fixed top-0 left-0 right-0 z-50 border-b border-border bg-background/80 backdrop-blur-sm">
         <div className="container mx-auto flex items-center justify-between px-6 py-4">
           <div className="flex items-center gap-2">
-            <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary">
-              <Sparkles className="h-6 w-6 text-primary-foreground" />
+            <div className="flex h-13 w-13 items-center justify-center rounded-lg">
+              <Image src="/icon.svg" alt="Logo" width={40} height={40} />
             </div>
             <span className="text-xl font-semibold text-foreground">
               DesignAI

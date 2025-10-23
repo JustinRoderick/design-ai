@@ -17,6 +17,9 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "designai",
   description: "designai",
+  icons: {
+    icon: "/icon.svg",
+  },
 };
 
 export default function RootLayout({
