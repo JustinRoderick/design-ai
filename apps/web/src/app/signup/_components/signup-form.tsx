@@ -1,5 +1,12 @@
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
+import { authClient } from "@/lib/auth-client";
+import { useForm } from "@tanstack/react-form";
+import { toast } from "sonner";
+import z from "zod";
+import Loader from "@/components/loader";
+import { Label } from "@/components/ui/label";
+import { useRouter } from "next/navigation";
 import {
   Field,
   FieldDescription,
@@ -9,12 +16,62 @@ import {
 } from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
 
-export default function SignupForm({
-  className,
-  ...props
-}: React.ComponentProps<"form">) {
+const formSchema = z.object({
+  name: z.string().min(2, "Name must be at least 2 characters"),
+  email: z.email("Invalid email address"),
+  password: z.string().min(8, "Password must be at least 8 characters"),
+  confirmPassword: z.string().min(8, "Password must be at least 8 characters"),
+});
+
+type FormSchema = z.infer<typeof formSchema>;
+
+export default function SignupForm() {
+  const router = useRouter();
+  const { isPending } = authClient.useSession();
+
+  const form = useForm({
+    defaultValues: {
+      email: "",
+      password: "",
+      confirmPassword: "",
+      name: "",
+    },
+    onSubmit: async ({ value }) => {
+      await authClient.signUp.email(
+        {
+          email: value.email,
+          password: value.password,
+          name: value.name,
+        },
+        {
+          onSuccess: () => {
+            router.push("/dashboard");
+            toast.success("Sign up successful");
+          },
+          onError: (error) => {
+            toast.error(error.error.message || error.error.statusText);
+          },
+        }
+      );
+    },
+    validators: {
+      onSubmit: formSchema
+    },
+  });
+
+  if (isPending) {
+    return <Loader />;
+  }
+
   return (
-    <form className={cn("flex flex-col gap-6", className)} {...props}>
+    <form
+        onSubmit={(e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          form.handleSubmit();
+        }}
+        className="flex flex-col gap-6"
+      >
       <FieldGroup>
         <div className="flex flex-col items-center gap-1 text-center">
           <h1 className="text-2xl font-bold">Create your account</h1>

@@ -63,7 +63,7 @@ export default function SignUpForm({
           e.stopPropagation();
           form.handleSubmit();
         }}
-        className="space-y-4"
+        className="flex flex-col gap-6"
       >
         <div>
           <form.Field name="name">
