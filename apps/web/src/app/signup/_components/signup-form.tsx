@@ -236,6 +236,11 @@ export default function SignupForm() {
           <FieldDescription className="px-6 text-center">
             Already have an account? <Link href="/login">Sign in</Link>
           </FieldDescription>
+          <FieldSeparator></FieldSeparator>
+          <FieldDescription className="px-6 text-center">
+            By clicking continue, you agree to our{" "}
+            <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>.
+          </FieldDescription>
         </Field>
       </FieldGroup>
     </form>
