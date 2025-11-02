@@ -2,7 +2,7 @@
 
 # ToDo
 
-- [ ] Google OAuth
+- [x] Google OAuth
 - [ ] Image upload
 - [ ] nano banana through fal.ai
 - [ ]
