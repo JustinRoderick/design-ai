@@ -1,5 +1,7 @@
 import { initTRPC, TRPCError } from "@trpc/server";
 import type { Context } from "./context";
+import { chatRouter } from "./routers/chat";
+import { userRouter } from "./routers/user";
 
 export const t = initTRPC.context<Context>().create();
 
@@ -22,3 +24,9 @@ export const protectedProcedure = t.procedure.use(({ ctx, next }) => {
     },
   });
 });
+
+export const appRouter = router({
+  user: userRouter,
+  chat: chatRouter,
+});
+export type AppRouter = typeof appRouter;

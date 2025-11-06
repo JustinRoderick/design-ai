@@ -1,7 +1,7 @@
 import "dotenv/config";
 import { trpcServer } from "@hono/trpc-server";
 import { createContext } from "@designai/api/context";
-import { appRouter } from "@designai/api/routers/index";
+import { appRouter } from "@designai/api/index";
 import { auth } from "@designai/auth";
 import { Hono } from "hono";
 import { cors } from "hono/cors";
