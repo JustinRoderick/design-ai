@@ -1,3 +1,3 @@
-import { protectedProcedure, publicProcedure, router } from "../index";
+import { protectedProcedure, publicProcedure } from "../index";
 
 export const chatRouter = {};
