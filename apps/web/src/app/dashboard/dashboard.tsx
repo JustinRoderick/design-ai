@@ -11,7 +11,7 @@ export default function Dashboard({
   customerState: ReturnType<typeof authClient.customer.state>;
   session: typeof authClient.$Infer.Session;
 }) {
-  const privateData = useQuery(trpc.privateData.queryOptions());
+  const privateData = useQuery(trpc.user.privateData.queryOptions());
 
   const hasProSubscription = customerState?.activeSubscriptions?.length! > 0;
   console.log("Active subscriptions:", customerState?.activeSubscriptions);
